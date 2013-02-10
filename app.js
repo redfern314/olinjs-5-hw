@@ -12,7 +12,7 @@ var express = require('express')
 
 var app = express();
 var mongoose = require('mongoose');
-mongoose.connect((process.env.MONGOLAB_URI||'mongodb://localhost')+'/fb_hw5');
+mongoose.connect((process.env.MONGOLAB_URI||'mongodb://localhost/')+'fb_hw5');
 
 var models = require('./models/models.js')
   , index = require('./routes/index')
