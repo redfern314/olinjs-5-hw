@@ -43,8 +43,9 @@ exports.userExists = function (req,res,next) {
     console.log(req.session.userid);
     if (!req.session.userid) {
         console.log("no user in session");
-        req.facebook.api('/me/name', function(err, data) {
+        req.facebook.api('/me/name&redirect=false', function(err, data) {
             req.session.userid=req.facebook.user;
+            console.log(data);
             Settings.findOne({id:req.facebook.user}).exec(function(err,docs) {
                 if (err) return console.log(err);
                 if(!docs) {
@@ -53,9 +54,9 @@ exports.userExists = function (req,res,next) {
                     if (err) return console.log(err);
                     var newsettings = new Settings({id: req.facebook.user, 
                                                     bgcolor:"#ffffff",
-                                                    textcolor:"#000000",
-                                                    textsize:12,
-                                                    name:data});
+                                                    textcolor:"#ffffff",
+                                                    textsize:12
+                                                });
                     newsettings.save(function (err) {
                       if (err) console.log(err);
                       console.log("saving newsettings")

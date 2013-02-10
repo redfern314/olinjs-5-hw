@@ -12,8 +12,7 @@ exports.feed = function (req, res) {
                           propic:data.data.url,
                           bgcolor:docs.bgcolor,
                           textcolor:docs.textcolor,
-                          textsize:docs.textsize,
-                          name:docs.name
+                          textsize:docs.textsize
                         });
     });
     req.facebook.api('/me/statuses', function(err, data) {

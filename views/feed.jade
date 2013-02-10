@@ -8,15 +8,14 @@ block content
     div#titlebar
         div.center
             a(href='/logout')
-                p.inline.title Logout
+                p.inline.title(style='font-size: #{textsize};color: #{textcolor};') Logout
             a(href='/feed')
                 h1.title.inline StalkerCentral
             a(href='/admin')
-                p.inline.title Settings
+                p.inline.title(style='font-size: #{textsize};color: #{textcolor};') Settings
 
     div#content
         div#feed
             div.container.center#user
                 div#propic
                     img(src=propic)
-                    p(style='font-size: #{textsize};color: #{textcolor};')= name
