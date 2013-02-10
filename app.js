@@ -39,7 +39,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-var scope = {scope:['user_status']};
+var scope = {scope:['user_status','user_photos', 'friends_photos', 'publish_stream']};
 
 app.get('/', index.index);
 app.get('/logout', index.logout, index.index);

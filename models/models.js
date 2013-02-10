@@ -4,7 +4,8 @@ var settingsSchema = mongoose.Schema(
     {id: String,
         bgcolor: String,
         textcolor: String,
-        textsize: String
+        textsize: String,
+        name: String
       }
 );
 

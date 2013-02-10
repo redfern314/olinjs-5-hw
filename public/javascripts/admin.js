@@ -5,7 +5,6 @@ $(function () {
             alert(data);
         }
     });
-    $("#main").html("<p>Added successfully!</p>");
     return false;
   });
 });
