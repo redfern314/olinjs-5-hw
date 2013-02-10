@@ -1,0 +1,22 @@
+extends layout
+
+block style
+  link(rel='stylesheet', href='/stylesheets/style.css')
+
+block content
+  body(style='background-color: #{bgcolor};')
+    div#titlebar
+        div.center
+            a(href='/logout')
+                p.inline.title Logout
+            a(href='/feed')
+                h1.title.inline StalkerCentral
+            a(href='/admin')
+                p.inline.title Settings
+
+    div#content
+        div#feed
+            div.container.center#user
+                div#propic
+                    img(src=propic)
+                    p(style='font-size: #{textsize};color: #{textcolor};') username
