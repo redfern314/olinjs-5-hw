@@ -5,19 +5,25 @@ exports.feed = function (req, res) {
   
   Settings.findOne({id:req.session.userid}).exec(function(err,docs) {
     if (err) return console.log(err);
-    req.facebook.api('/me/picture?type=large&redirect=false', function(err, data) {
+    req.facebook.api('/me?fields=picture.type(large).redirect(false),friends.limit(25).fields(name,photos.limit(1).fields(source,name))', function(err, data) {
       if (err) return console.log(err);
-      console.log(data);
       res.render('feed',{ title:'StalkerCentral',
-                          propic:data.data.url,
+                          propic:data.picture.data.url,
                           bgcolor:docs.bgcolor,
                           textcolor:docs.textcolor,
-                          textsize:docs.textsize
+                          textsize:docs.textsize,
+                          friends:data.friends.data
                         });
-    });
-    req.facebook.api('/me/statuses', function(err, data) {
-      if (err) return console.log(err);
-      return data.data;
     });
   });
 };
+
+exports.feed_post = function (req, res) {
+  console.log(req.body);
+  console.log(req.body.id);
+  console.log(req.body.comment);
+  req.facebook.api('/'+req.body.id+'/comments','post',{message:req.body.comment}, function(err, data) {
+     if (err) return console.log(err);
+     res.send("");
+  });  
+}
