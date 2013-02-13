@@ -30,7 +30,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.cookieParser(process.env.APP_SECRET));
   app.use(express.session());
-  app.use(Facebook.middleware({appId: process.env.FB_KEY, secret: process.env.FB_KEY}));
+  app.use(Facebook.middleware({appId: process.env.FB_KEY, secret: process.env.FB_SECRET}));
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
