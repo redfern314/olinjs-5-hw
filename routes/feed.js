@@ -5,7 +5,7 @@ exports.feed = function (req, res) {
   
   Settings.findOne({id:req.session.userid}).exec(function(err,docs) {
     if (err) return console.log(err);
-    req.facebook.api('/me?fields=picture.type(large).redirect(false),friends.limit(25).fields(name,photos.limit(1).fields(source,name))', function(err, data) {
+    req.facebook.api('/me?fields=picture.type(large).redirect(false),friends.limit(10).fields(name,photos.limit(1).fields(source,name))', function(err, data) {
       if (err) return console.log(err);
       res.render('feed',{ title:'StalkerCentral',
                           propic:data.picture.data.url,
